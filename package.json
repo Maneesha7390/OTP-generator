@@ -1,0 +1,26 @@
+{
+  "name": "ahex-otp-generator",
+  "version": "1.0.0",
+  "description": "Repository containing Node.js code for TOTP and HOTP implementations for secure two-factor authentication.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maneesha7390/ahex-OTP-generator.git"
+  },
+  "keywords": [
+    "TOTP",
+    "HOTP"
+  ],
+  "author": "Maneesha Padavala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maneesha7390/ahex-OTP-generator/issues"
+  },
+  "homepage": "https://github.com/Maneesha7390/ahex-OTP-generator#readme",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  }
+}
