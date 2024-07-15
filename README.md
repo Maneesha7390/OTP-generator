@@ -12,7 +12,7 @@ Install the package using npm:
 
 ```bash
 npm install ahex-otp-generator
-
+```
 
 ## Usage
 ### Generating TOTP
