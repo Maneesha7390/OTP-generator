@@ -11,7 +11,7 @@ This package includes functions to generate TOTP and HOTP codes, which are commo
 Install the package using npm:
 
 ```bash
-npm install ahex-otp-generator
+npm install @ahextechnology/otp-generator
 ```
 
 ## Usage
