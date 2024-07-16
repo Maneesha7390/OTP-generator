@@ -13,14 +13,14 @@ To use this package, you need to have Node.js installed. You can include this co
 
 You can configure the number of bytes, encoding, algorithm, number of digits, and step as needed:
 
-\`\`\`javascript
+``` javascript
 const crypto = require('crypto');
 let bytes = 10;
 let encoding = 'base64';
 let algorithm = 'sha1';
 let digits = 6;
 let step = 30;
-\`\`\`
+```
 
 ### Functions
 
@@ -28,18 +28,18 @@ let step = 30;
 
 Generates a secret key for TOTP/HOTP.
 
-\`\`\`javascript
+``` javascript
 function generateSecret() {
   const secret = crypto.randomBytes(bytes).toString(encoding);
   return secret;
 }
-\`\`\`
+```
 
 #### `generateTOTP(secret, time = null, digits, step)`
 
 Generates a TOTP based on the provided secret, time, number of digits, and step.
 
-\`\`\`javascript
+``` javascript
 function generateTOTP(secret, time = null, digits, step) {
   const currentTime = time || Date.now();
   const timeInSeconds = Math.floor(currentTime / 1000);
@@ -66,13 +66,13 @@ function generateTOTP(secret, time = null, digits, step) {
   const otp = binary % mod;
   return otp.toString().padStart(digits, '0');
 }
-\`\`\`
+```
 
 #### `verifyTOTP(secret, token, window = 0, digits, step)`
 
 Verifies a TOTP based on the provided secret, token, window, number of digits, and step.
 
-\`\`\`javascript
+``` javascript
 function verifyTOTP(secret, token, window = 0, digits, step) {
   const currentTime = Math.floor(Date.now() / 1000);
   for (let i = -window; i <= window; i++) {
@@ -84,13 +84,13 @@ function verifyTOTP(secret, token, window = 0, digits, step) {
   }
   return false;
 }
-\`\`\`
+```
 
 #### `generateHOTP(secret, counter, digits)`
 
 Generates an HOTP based on the provided secret, counter, and number of digits.
 
-\`\`\`javascript
+``` javascript
 function generateHOTP(secret, counter, digits) {
   const hmac = crypto.createHmac(algorithm, Buffer.from(secret, encoding));
   const counterBuffer = Buffer.alloc(8);
@@ -109,22 +109,22 @@ function generateHOTP(secret, counter, digits) {
   const otp = binary % mod;
   return otp.toString().padStart(digits, '0');
 }
-\`\`\`
+```
 
 #### `verifyHOTP(secret, token, counter, digits)`
 
 Verifies an HOTP based on the provided secret, token, counter, and number of digits.
 
-\`\`\`javascript
+``` javascript
 function verifyHOTP(secret, token, counter, digits) {
   const hotp = generateHOTP(secret, counter, digits);
   return token === hotp;
 }
-\`\`\`
+```
 
 ### Example Usage
 
-\`\`\`javascript
+``` javascript
 const {
   generateSecret,
   generateTOTP,
@@ -147,7 +147,7 @@ console.log('HOTP:', hotp);
 
 const isValidHOTP = verifyHOTP(secret, hotp, 1, digits);
 console.log('Is valid HOTP:', isValidHOTP);
-\`\`\`
+```
 
 ### Explanation
 
